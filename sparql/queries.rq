@@ -1,0 +1,7 @@
+PREFIX net: <http://example.org/seanet#>
+SELECT ?switch WHERE {
+  ?host net:hasPort ?p .
+  ?l net:to ?p .
+  ?l net:from ?p2 .
+  ?switch net:hasPort ?p2 .
+}

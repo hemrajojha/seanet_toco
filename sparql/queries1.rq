@@ -1,0 +1,10 @@
+PREFIX net: <http://example.org/seanet#>
+
+SELECT ?device1 ?device2 WHERE {
+  ?device1 net:hasPort ?port1 .
+  ?device2 net:hasPort ?port2 .
+  ?link net:from ?port1 .
+  ?link net:to ?port2 .
+  FILTER(?device1 != ?device2)
+}
+

@@ -1,0 +1,28 @@
+@prefix : <http://example.org/seanet#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+:NetworkElement a owl:Class .
+:Device rdfs:subClassOf :NetworkElement .
+:Switch rdfs:subClassOf :Device .
+:Host rdfs:subClassOf :Device .
+:Port a owl:Class .
+:Link a owl:Class .
+:Flow a owl:Class .
+:Action a owl:Class .
+:Location a owl:Class .
+
+:hasPort a owl:ObjectProperty ; rdfs:domain :Device ; rdfs:range :Port .
+:from a owl:ObjectProperty ; rdfs:domain :Link ; rdfs:range :Port .
+:to a owl:ObjectProperty ; rdfs:domain :Link ; rdfs:range :Port .
+:hasFlow a owl:ObjectProperty ; rdfs:domain :Device ; rdfs:range :Flow .
+:hasFlowAction a owl:ObjectProperty ; rdfs:domain :Flow ; rdfs:range :Action .
+:location a owl:ObjectProperty ; rdfs:domain :Device ; rdfs:range :Location .
+
+:hasMAC a owl:DatatypeProperty ; rdfs:domain :Port ; rdfs:range xsd:string .
+:priority a owl:DatatypeProperty ; rdfs:domain :Flow ; rdfs:range xsd:int .
+:idleTimeout a owl:DatatypeProperty ; rdfs:domain :Flow ; rdfs:range xsd:int .
+:hardTimeout a owl:DatatypeProperty ; rdfs:domain :Flow ; rdfs:range xsd:int .
+:lat a owl:DatatypeProperty ; rdfs:domain :Location ; rdfs:range xsd:float .
+:long a owl:DatatypeProperty ; rdfs:domain :Location ; rdfs:range xsd:float .
